@@ -11,11 +11,11 @@ inputImg = imread(fullfile(dirName,fileName));
 
 % Turn RGB to BW, cheat and take R channel and invert it (for Black signal
 % on white background in tiff image)
-plexusImg = ~inputImg(:,:,1);
+plexusImg = imclose(~inputImg(:,:,1),strel('disk',5));
 
 %%
 fprintf('Getting skeleton...');
-[voronoiSkeleton,vertices,edges] = voronoiSkel(plexusImg, 'trim', 2*pi);
+[voronoiSkeleton,vertices,edges] = voronoiSkel(plexusImg);
 fprintf('finished\n');
 negPlexus = ~plexusImg;
 B = bwboundaries(plexusImg);
