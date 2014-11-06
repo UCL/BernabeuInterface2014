@@ -246,6 +246,7 @@ Nv=str2double(Nv);
 v=cell2mat(v);
 s=s(pos:end);
 [Ne s]=strtok(s);
+Ne=str2double(Ne);
 e=double(cell2mat(textscan(s,'%d %d %d %d %d',Ne)));
 e=e(:,2:5);
 e(:,1:2)=e(:,1:2)+1;
